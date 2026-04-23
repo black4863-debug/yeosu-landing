@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://black4863-debug.github.io/yeosu-landing/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://black4863-debug.github.io/yeosu-landing/pages/%EC%82%AC%EC%97%85%EA%B0%9C%EC%9A%94.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://black4863-debug.github.io/yeosu-landing/pages/%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://black4863-debug.github.io/yeosu-landing/pages/%ED%8F%89%ED%98%95%EC%95%88%EB%82%B4.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://black4863-debug.github.io/yeosu-landing/pages/%EB%8B%A8%EC%A7%80%EB%B0%B0%EC%B9%98.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://black4863-debug.github.io/yeosu-landing/pages/%EC%98%A4%EC%8B%9C%EB%8A%94%EA%B8%B8.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
