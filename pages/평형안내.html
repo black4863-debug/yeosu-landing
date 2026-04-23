@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>평형안내 | 여수소제 중흥S클래스 우미린</title>
+  <meta name="description" content="여수소제 중흥S클래스 우미린 평형안내 - 59㎡, 74㎡, 84㎡ 공급면적 및 특징" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .plan-section { background: var(--off-white); }
+    .plan-tab-wrap {
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+      margin-bottom: 40px;
+      background: var(--gray-light);
+      border-radius: 10px;
+      padding: 6px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .plan-tab {
+      padding: 10px 28px;
+      border-radius: 7px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .plan-tab.active, .plan-tab:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .plan-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .plan-image-box {
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--gray-light);
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--gray-mid);
+      border: 1px solid var(--gray);
+    }
+    .plan-image-box span { font-size: 2.5rem; }
+    .plan-image-box p { font-size: 0.85rem; }
+    .plan-detail-info {}
+    .plan-detail-info h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+    .plan-detail-info h3 small {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-light);
+      margin-left: 4px;
+    }
+    .plan-detail-info .type-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy-dark);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    .plan-spec-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    .plan-spec-table th, .plan-spec-table td { padding: 10px 14px; font-size: 0.88rem; border-bottom: 1px solid var(--gray); }
+    .plan-spec-table th { color: var(--text-light); font-weight: 500; width: 100px; text-align: left; }
+    .plan-spec-table td { color: var(--text); font-weight: 600; }
+
+    /* 전체 비교 테이블 */
+    .compare-section { background: var(--white); }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .compare-table thead th {
+      background: var(--navy);
+      color: var(--white);
+      padding: 14px 16px;
+      font-weight: 700;
+    }
+    .compare-table thead th:first-child { text-align: left; }
+    .compare-table tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--gray-light);
+    }
+    .compare-table tbody td:first-child { text-align: left; font-weight: 600; color: var(--text); }
+    .compare-table tbody tr:nth-child(even) td { background: var(--off-white); }
+    .compare-table tbody tr:last-child td { border-bottom: none; }
+    .check { color: var(--gold-dark); font-weight: 700; }
+    .dash { color: var(--gray-mid); }
+
+    @media (max-width: 768px) {
+      .plan-detail-grid { grid-template-columns: 1fr; }
+      .plan-image-box { display: none; }
+      .plan-tab { padding: 9px 18px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body class="page-body">
+
+  <!-- ░░ HEADER ░░ -->
+  <header id="site-header">
+    <div class="container">
+      <div class="header-logo">
+        <a href="../index.html">
+          <span class="logo-sub">Yeosu Soje</span>
+          <span class="logo-main">중흥S클래스 <span>&</span> 우미린</span>
+        </a>
+      </div>
+      <nav class="header-nav" aria-label="주 메뉴">
+        <a href="../index.html">홈</a>
+        <a href="사업개요.html">사업개요</a>
+        <a href="프리미엄.html">프리미엄</a>
+        <a href="평형안내.html" class="active">평형안내</a>
+        <a href="단지배치.html">단지배치</a>
+        <a href="오시는길.html">오시는길</a>
+      </nav>
+      <a href="tel:061-752-8545" class="header-phone">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 11.37 19.79 19.79 0 01.63 2.74 2 2 0 012.61.57h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.19a16 16 0 006.9 6.9l.95-.95a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.03z"/>
+        </svg>
+        <span class="header-phone-text">061-752-8545</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="../index.html">홈</a>
+    <a href="사업개요.html">사업개요</a>
+    <a href="프리미엄.html">프리미엄</a>
+    <a href="평형안내.html" class="active">평형안내</a>
+    <a href="단지배치.html">단지배치</a>
+    <a href="오시는길.html">오시는길</a>
+    <a href="tel:061-752-8545" class="mobile-nav-phone">📞 061-752-8545</a>
+  </nav>
+
+  <main>
+    <!-- ░░ SUB HERO ░░ -->
+    <section class="sub-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="../index.html">홈</a> &rsaquo; 평형안내
+        </div>
+        <h1>평형안내</h1>
+        <p>59㎡ · 74㎡ · 84㎡ 세 가지 타입</p>
+        <span class="sub-hero-bar"></span>
+      </div>
+    </section>
+
+    <!-- ░░ PLAN CARDS ░░ -->
+    <section class="plan-section section">
+      <div class="container">
+        <div class="section-title">
+          <h2>공급 평형 한눈에 보기</h2>
+          <span class="title-bar"></span>
+        </div>
+
+        <div class="plan-grid">
+
+          <!-- 59㎡ -->
+          <div class="plan-card">
+            <div class="plan-card-head">
+              <div class="size">59<span>㎡</span></div>
+              <div class="type">A·B타입 (공급면적 기준)</div>
+            </div>
+            <div class="plan-card-body">
+              <ul class="plan-feat-list">
+                <li>공급면적 59.98㎡ / 전용면적 46.6㎡</li>
+                <li>방 2개 + 욕실 1개 구성</li>
+                <li>신혼부부·1~2인 가구에 최적화</li>
+                <li>효율적인 공간 배치, 발코니 확장 가능</li>
+                <li>개인정보동의 필수 (청약가점제 해당)</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 74㎡ -->
+          <div class="plan-card">
+            <div class="plan-card-head" style="background: var(--gold-dark);">
+              <div class="size">74<span>㎡</span></div>
+              <div class="type">A·B타입 (공급면적 기준)</div>
+            </div>
+            <div class="plan-card-body">
+              <ul class="plan-feat-list">
+                <li>공급면적 74.82㎡ / 전용면적 59.9㎡</li>
+                <li>방 3개 + 욕실 1~2개 구성</li>
+                <li>3~4인 가족에 적합한 실용 평형</li>
+                <li>넓은 거실·주방 오픈형 설계</li>
+                <li>팬트리·드레스룸 등 수납 특화</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 84㎡ -->
+          <div class="plan-card">
+            <div class="plan-card-head">
+              <div class="size">84<span>㎡</span></div>
+              <div class="type">A·B·C타입 (공급면적 기준)</div>
+            </div>
+            <div class="plan-card-body">
+              <ul class="plan-feat-list">
+                <li>공급면적 84.96㎡ / 전용면적 68.8㎡</li>
+                <li>방 3개 + 욕실 2개 구성</li>
+                <li>4인 가족 표준, 가장 많은 세대 공급</li>
+                <li>알파룸·서재 공간 별도 구성</li>
+                <li>안방 드레스룸 및 욕실 독립 설계</li>
+              </ul>
+            </div>
+          </div>
+
+        </div><!-- /plan-grid -->
+
+        <p style="font-size:0.78rem;color:var(--gray-mid);text-align:center;margin-top:20px;">
+          ※ 면적·타입·세대수는 사업 진행에 따라 변경될 수 있습니다. 확정 내용은 입주자모집공고를 기준으로 합니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- ░░ COMPARE TABLE ░░ -->
+    <section class="compare-section section">
+      <div class="container">
+        <div class="section-title">
+          <h2>평형별 상세 비교</h2>
+          <span class="title-bar"></span>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>구분</th>
+                <th>59㎡</th>
+                <th>74㎡</th>
+                <th>84㎡</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>공급면적</td>
+                <td>약 59.98㎡</td>
+                <td>약 74.82㎡</td>
+                <td>약 84.96㎡</td>
+              </tr>
+              <tr>
+                <td>전용면적</td>
+                <td>약 46.6㎡</td>
+                <td>약 59.9㎡</td>
+                <td>약 68.8㎡</td>
+              </tr>
+              <tr>
+                <td>방 수</td>
+                <td>2개</td>
+                <td>3개</td>
+                <td>3개</td>
+              </tr>
+              <tr>
+                <td>욕실 수</td>
+                <td>1개</td>
+                <td>1~2개</td>
+                <td>2개</td>
+              </tr>
+              <tr>
+                <td>발코니 확장</td>
+                <td><span class="check">가능</span></td>
+                <td><span class="check">가능</span></td>
+                <td><span class="check">가능</span></td>
+              </tr>
+              <tr>
+                <td>드레스룸</td>
+                <td><span class="dash">—</span></td>
+                <td><span class="check">기본 제공</span></td>
+                <td><span class="check">기본 제공</span></td>
+              </tr>
+              <tr>
+                <td>알파룸/서재</td>
+                <td><span class="dash">—</span></td>
+                <td><span class="dash">—</span></td>
+                <td><span class="check">일부 타입</span></td>
+              </tr>
+              <tr>
+                <td>팬트리</td>
+                <td><span class="dash">—</span></td>
+                <td><span class="check">일부 타입</span></td>
+                <td><span class="check">기본 제공</span></td>
+              </tr>
+              <tr>
+                <td>권장 가구 유형</td>
+                <td>신혼·1~2인</td>
+                <td>3~4인 가족</td>
+                <td>4인 이상 가족</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.78rem;color:var(--gray-mid);margin-top:16px;line-height:1.7;">
+          ※ 상기 사양은 예시이며, 실제 사양은 입주자모집공고 시 확정됩니다.<br />
+          ※ 발코니 확장 여부 및 옵션 비용은 별도 안내됩니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- ░░ CTA ░░ -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>원하는 평형으로 미리 등록하세요</h2>
+        <p>관심 평형을 선택하고 관심고객으로 등록하시면 우선 안내드립니다.</p>
+        <a href="../index.html#form" class="btn-cta">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+          관심고객 등록하기
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer id="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">반가운부동산 <span>·</span> 여수소제 중흥S클래스 우미린</div>
+        <div class="footer-info">
+          <strong>반가운부동산</strong>
+          <span class="footer-divider">|</span>
+          대표 서정원
+          <span class="footer-divider">|</span>
+          사업자등록번호 450-42-00734
+          <span class="footer-divider br"></span>
+          전남 순천시 해룡면 매안3길 43
+          <span class="footer-divider">|</span>
+          Tel. 061-752-8545
+          <span class="footer-mobile">· 010-6482-8545</span>
+        </div>
+        <p class="footer-disclaimer">
+          본 페이지는 분양 홍보 목적이며 실제 계약과 무관합니다.<br />
+          분양 관련 모든 사항은 공식 분양사무소를 통해 확인하시기 바랍니다.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const ham = document.getElementById('hamburger');
+    const mNav = document.getElementById('mobile-nav');
+    ham.addEventListener('click', () => {
+      const open = mNav.classList.toggle('open');
+      ham.classList.toggle('open', open);
+      ham.setAttribute('aria-expanded', open);
+    });
+  </script>
+</body>
+</html>

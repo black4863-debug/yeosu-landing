@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>오시는길 | 여수소제 중흥S클래스 우미린</title>
+  <meta name="description" content="여수소제 중흥S클래스 우미린 위치 안내 - 전라남도 여수시 소제동 및 반가운부동산 오시는길" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .map-section { background: var(--off-white); }
+
+    /* 실제 카카오맵 컨테이너 */
+    .kakao-map-container {
+      width: 100%;
+      height: 420px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--gray);
+      background: var(--gray-light);
+    }
+    .kakao-map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* 지도 플레이스홀더 (iframe 로드 실패 시) */
+    .map-placeholder {
+      width: 100%;
+      height: 420px;
+      border-radius: 12px;
+      border: 2px dashed var(--gray);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: var(--gray-light);
+      color: var(--gray-mid);
+      text-align: center;
+      padding: 24px;
+    }
+    .map-placeholder span { font-size: 3rem; }
+    .map-placeholder p { font-size: 0.88rem; line-height: 1.7; }
+    .map-placeholder a {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 10px 24px;
+      border-radius: var(--radius);
+      margin-top: 4px;
+    }
+    .map-placeholder a:hover { background: var(--navy-light); }
+
+    /* Location info */
+    .location-wrap { margin-top: 48px; }
+    .location-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .location-header h2 { font-size: 1.3rem; font-weight: 700; color: var(--navy); }
+    .loc-divider {
+      height: 1px;
+      background: var(--gray);
+      flex: 1;
+    }
+
+    .loc-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .loc-card {
+      background: var(--white);
+      border: 1px solid var(--gray);
+      border-radius: 10px;
+      padding: 28px;
+    }
+    .loc-card-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--gray);
+    }
+    .loc-card-title span { font-size: 1.1rem; }
+    .loc-row {
+      display: flex;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--text-light);
+      padding: 6px 0;
+      align-items: flex-start;
+    }
+    .loc-row .loc-key {
+      flex-shrink: 0;
+      width: 60px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .loc-row .loc-val { line-height: 1.6; }
+    .loc-row .loc-val a { color: var(--navy-light); font-weight: 600; }
+
+    /* 교통 안내 */
+    .transport-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .transport-card {
+      background: var(--white);
+      border: 1px solid var(--gray);
+      border-radius: 10px;
+      padding: 22px 18px;
+      text-align: center;
+    }
+    .transport-card .tc-icon { font-size: 2rem; margin-bottom: 10px; }
+    .transport-card .tc-title { font-size: 0.82rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .transport-card .tc-desc { font-size: 0.8rem; color: var(--text-light); line-height: 1.7; }
+
+    @media (max-width: 768px) {
+      .loc-cards { grid-template-columns: 1fr; }
+      .transport-grid { grid-template-columns: 1fr 1fr; }
+      .kakao-map-container, .map-placeholder { height: 320px; }
+    }
+    @media (max-width: 480px) {
+      .transport-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="page-body">
+
+  <!-- ░░ HEADER ░░ -->
+  <header id="site-header">
+    <div class="container">
+      <div class="header-logo">
+        <a href="../index.html">
+          <span class="logo-sub">Yeosu Soje</span>
+          <span class="logo-main">중흥S클래스 <span>&</span> 우미린</span>
+        </a>
+      </div>
+      <nav class="header-nav" aria-label="주 메뉴">
+        <a href="../index.html">홈</a>
+        <a href="사업개요.html">사업개요</a>
+        <a href="프리미엄.html">프리미엄</a>
+        <a href="평형안내.html">평형안내</a>
+        <a href="단지배치.html">단지배치</a>
+        <a href="오시는길.html" class="active">오시는길</a>
+      </nav>
+      <a href="tel:061-752-8545" class="header-phone">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 11.37 19.79 19.79 0 01.63 2.74 2 2 0 012.61.57h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.19a16 16 0 006.9 6.9l.95-.95a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.03z"/>
+        </svg>
+        <span class="header-phone-text">061-752-8545</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="../index.html">홈</a>
+    <a href="사업개요.html">사업개요</a>
+    <a href="프리미엄.html">프리미엄</a>
+    <a href="평형안내.html">평형안내</a>
+    <a href="단지배치.html">단지배치</a>
+    <a href="오시는길.html" class="active">오시는길</a>
+    <a href="tel:061-752-8545" class="mobile-nav-phone">📞 061-752-8545</a>
+  </nav>
+
+  <main>
+    <!-- ░░ SUB HERO ░░ -->
+    <section class="sub-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="../index.html">홈</a> &rsaquo; 오시는길
+        </div>
+        <h1>오시는길</h1>
+        <p>반가운부동산 · 여수소제 중흥S클래스 우미린 위치 안내</p>
+        <span class="sub-hero-bar"></span>
+      </div>
+    </section>
+
+    <!-- ░░ MAP + INFO ░░ -->
+    <section class="map-section section">
+      <div class="container">
+
+        <!-- 사업지 지도 -->
+        <div class="location-header">
+          <h2>📍 사업지 위치 — 여수시 소제동</h2>
+          <div class="loc-divider"></div>
+        </div>
+
+        <!-- 카카오맵 iframe: 여수시 소제동 중심 좌표 -->
+        <div class="kakao-map-container">
+          <iframe
+            src="https://map.kakao.com/link/map/여수소제동,34.7479,127.7372/embed"
+            title="여수소제 중흥S클래스 우미린 사업지 지도"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+
+        <!-- 상담 사무소 지도 -->
+        <div class="location-header" style="margin-top:48px;">
+          <h2>📍 상담사무소 — 반가운부동산</h2>
+          <div class="loc-divider"></div>
+        </div>
+
+        <!-- 카카오맵 iframe: 순천시 해룡면 매안3길 43 -->
+        <div class="kakao-map-container">
+          <iframe
+            src="https://map.kakao.com/link/map/반가운부동산,34.9358,127.5494/embed"
+            title="반가운부동산 위치 지도"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+
+        <!-- 주소 / 연락처 카드 -->
+        <div class="loc-cards" style="margin-top:32px;">
+          <div class="loc-card">
+            <div class="loc-card-title">
+              <span>🏗️</span> 사업지 (여수소제)
+            </div>
+            <div class="loc-row">
+              <span class="loc-key">주소</span>
+              <span class="loc-val">전라남도 여수시 소제동 일원<br />(소제지구 택지개발예정지구)</span>
+            </div>
+            <div class="loc-row">
+              <span class="loc-key">사업명</span>
+              <span class="loc-val">여수소제 중흥S클래스 우미린</span>
+            </div>
+            <div class="loc-row">
+              <span class="loc-key">문의</span>
+              <span class="loc-val">
+                <a href="tel:061-752-8545">061-752-8545</a>
+              </span>
+            </div>
+          </div>
+
+          <div class="loc-card">
+            <div class="loc-card-title">
+              <span>🏠</span> 상담사무소 (반가운부동산)
+            </div>
+            <div class="loc-row">
+              <span class="loc-key">주소</span>
+              <span class="loc-val">전남 순천시 해룡면 매안3길 43</span>
+            </div>
+            <div class="loc-row">
+              <span class="loc-key">대표</span>
+              <span class="loc-val">서정원</span>
+            </div>
+            <div class="loc-row">
+              <span class="loc-key">전화</span>
+              <span class="loc-val">
+                <a href="tel:061-752-8545">061-752-8545</a><br />
+                <a href="tel:010-6482-8545">010-6482-8545</a>
+              </span>
+            </div>
+            <div class="loc-row">
+              <span class="loc-key">사업자</span>
+              <span class="loc-val">450-42-00734</span>
+            </div>
+          </div>
+        </div><!-- /loc-cards -->
+
+        <!-- 교통 안내 -->
+        <div class="location-wrap">
+          <div class="location-header">
+            <h2>교통 이용 안내</h2>
+            <div class="loc-divider"></div>
+          </div>
+          <div class="transport-grid">
+            <div class="transport-card">
+              <div class="tc-icon">🚄</div>
+              <div class="tc-title">KTX / 기차</div>
+              <p class="tc-desc">
+                여수엑스포역 하차 후<br />
+                택시·버스 이용 약 15~20분<br />
+                (소제동 방면)
+              </p>
+            </div>
+            <div class="transport-card">
+              <div class="tc-icon">🚌</div>
+              <div class="tc-title">버스</div>
+              <p class="tc-desc">
+                여수 시내버스 이용<br />
+                소제동 정류장 하차<br />
+                (노선 변경 가능성 있음)
+              </p>
+            </div>
+            <div class="transport-card">
+              <div class="tc-icon">🚗</div>
+              <div class="tc-title">승용차</div>
+              <p class="tc-desc">
+                남해고속도로 여수IC<br />
+                여수 시내 방면 10~15분<br />
+                단지 내 주차 가능
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 상담 안내 -->
+        <div style="background:var(--navy);border-radius:10px;padding:28px 32px;margin-top:40px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+          <div>
+            <p style="font-size:0.72rem;color:var(--gold);font-weight:700;letter-spacing:0.12em;margin-bottom:6px;">CONTACT US</p>
+            <p style="font-size:1.15rem;font-weight:700;color:var(--white);">전화·방문 상담을 환영합니다</p>
+            <p style="font-size:0.88rem;color:rgba(255,255,255,0.6);margin-top:4px;">
+              평일·주말 09:00 ~ 18:00 (공휴일 가능, 사전 문의 요)
+            </p>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="tel:061-752-8545" style="display:flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy-dark);font-size:0.95rem;font-weight:700;padding:13px 22px;border-radius:var(--radius);white-space:nowrap;">
+              📞 061-752-8545
+            </a>
+            <a href="../index.html#form" style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:var(--white);font-size:0.95rem;font-weight:600;padding:13px 22px;border-radius:var(--radius);white-space:nowrap;">
+              관심고객 등록
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ░░ CTA ░░ -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>지금 바로 관심고객으로 등록하세요</h2>
+        <p>등록 고객께 청약 일정, 분양 정보를 가장 먼저 안내드립니다.</p>
+        <a href="../index.html#form" class="btn-cta">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+          관심고객 등록하기
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer id="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">반가운부동산 <span>·</span> 여수소제 중흥S클래스 우미린</div>
+        <div class="footer-info">
+          <strong>반가운부동산</strong>
+          <span class="footer-divider">|</span>
+          대표 서정원
+          <span class="footer-divider">|</span>
+          사업자등록번호 450-42-00734
+          <span class="footer-divider br"></span>
+          전남 순천시 해룡면 매안3길 43
+          <span class="footer-divider">|</span>
+          Tel. 061-752-8545
+          <span class="footer-mobile">· 010-6482-8545</span>
+        </div>
+        <p class="footer-disclaimer">
+          본 페이지는 분양 홍보 목적이며 실제 계약과 무관합니다.<br />
+          분양 관련 모든 사항은 공식 분양사무소를 통해 확인하시기 바랍니다.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const ham = document.getElementById('hamburger');
+    const mNav = document.getElementById('mobile-nav');
+    ham.addEventListener('click', () => {
+      const open = mNav.classList.toggle('open');
+      ham.classList.toggle('open', open);
+      ham.setAttribute('aria-expanded', open);
+    });
+  </script>
+</body>
+</html>
